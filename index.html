@@ -18,12 +18,41 @@
     </nav>
   </header>
   <main>
+    <h2 class="Index-h2">Bienvenido a la página sobre Elon Musk</h2>
     <section>
-      <h2 class="Index-h2">Bienvenido a la página sobre Elon Musk</h2>
-      <div class="Image_center">
-        <img src="Elon1.jpg" alt="Elon Foto">
-      </div>
-      <!-- Inserta más contenido relevante sobre la portada aquí -->
+      <div id="player"></div>
+    <script>
+        // Carga la API de YouTube
+        function loadYouTubeAPI() {
+            const tag = document.createElement('script');
+            tag.src = 'https://www.youtube.com/iframe_api';
+            const firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        }
+
+        // Inicializa el reproductor cuando se carga la API
+        let player;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('player', {
+                height: '315',
+                width: '560',
+                videoId: '60-WrGl5yVM', // ID del video de YouTube
+                playerVars: {
+                    'autoplay': 0, // Auto-reproducción desactivada
+                },
+            });
+        }
+
+        // Función para reproducir el video
+        function playVideo() {
+            if (player) {
+                player.playVideo();
+            }
+        }
+
+        // Carga la API de YouTube al cargar la página
+        window.onload = loadYouTubeAPI;
+    </script>
     </section>
   </main>
 </body>
